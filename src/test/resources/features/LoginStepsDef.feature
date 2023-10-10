@@ -1,13 +1,12 @@
-@Run
 Feature: Check the login page
 
   Scenario Outline: Check the login button is displayed
     Given User open the browser
-    When user is searching for website
-    And user is on home page
-    And user is click on login icon
-    And user insert the <password> and <login>
-    Then login button is displayed
+    When User is searching for website
+    And User is on home page
+    And User is click on login icon
+    And User insert the <password> and <login>
+    Then Login button is displayed and clicked
 
     Examples:
       | password    | login                   |
