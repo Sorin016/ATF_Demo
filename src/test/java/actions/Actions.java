@@ -8,7 +8,7 @@ public class Actions {
     }
     public static void click(WebElement element) throws InterruptedException {
         Thread.sleep(5000);
-        boolean el=element.isDisplayed();
+        boolean el = element.isDisplayed();
         element.click();
     }
 }
