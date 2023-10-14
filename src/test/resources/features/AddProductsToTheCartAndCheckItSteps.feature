@@ -9,10 +9,10 @@ Feature: Add items to the cart
     And User insert the <password> and <login>
     And Login button is displayed and clicked
     And User navigate to Mens Shoes
-    And Choose the <mens size> and <color> and <price>
-    And Choose the first 2 items and add them to the cart
+    And Choose the <mens_size> and <color> and <price>
+    And Choose the first item and add them to the cart
     Then Check that all selected items are present in cart
 
     Examples:
-      | password    | login                   | mens size | color | price            |
+      | password    | login                   | mens_size | color | price            |
       | samsungG900 | sorin.cucereavu@mail.ru | 9.5       | Black | $35.00 and Under |
