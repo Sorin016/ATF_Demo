@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 @Getter
 public class LoginPage extends PageObjects {
-    @Getter
+
 //    @FindBy(xpath = "//input[@name='email'")
 //    WebElement login;
     @FindBy(xpath = "//*[@id=\"ap_email\"]")
@@ -19,6 +19,9 @@ public class LoginPage extends PageObjects {
 //    WebElement submitButton;
     @FindBy(xpath = "//*[@id=\"signInSubmit\"]")
     WebElement submitButton;
+
+    @FindBy(xpath = "//*[@id=\"authportal-main-section\"]/div[2]/div/div/form/div/div/div/h1")
+    WebElement sighInTextOnLoginPage;
 
     public LoginPage(WebDriver driver) {
         super(driver);

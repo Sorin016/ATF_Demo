@@ -3,7 +3,7 @@ package stepDefinition;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
 
-import static actions.Actions.click;
+import static actions.Actions.*;
 import static util.WaitUtils.waitForRetry;
 
 
@@ -11,37 +11,38 @@ public class AddToCartFunctionality extends AbstractStepDef {
 
 
     @When("User navigate to Mens Shoes")
-    public void user_navigate_to_Mens_Shoes() {
+    public void user_navigate_to_Mens_Shoes() throws InterruptedException {
         waitForRetry(2000);
-        driver.findElement(By.id("searchAll")).sendKeys("mens shoes");
+        sendKey(searchForMensShoes.getSerchAllTab(),"mens shoes");
         waitForRetry(2000);
-        driver.findElement(By.xpath("//*[@id=\"searchForm\"]/button")).click();
+        click(searchForMensShoes.getSearchButton());
     }
 
     @When("Choose the {} and {} and {}")
     public void choose_the_mens_size_and_color_and_price(String mens_size, String color, String price) throws InterruptedException {
         waitForRetry(2000);
         log.info(" Man Shoe's inscription is displayed");
-        driver.findElement(By.xpath("//*[@id=\"main\"]/div/div/div/div[3]/div/h1")).isDisplayed();
+        isDisplayed(searchForMensShoes.getMensShoesLogo());
+//        driver.findElement(By.xpath("//*[@id=\"main\"]/div/div/div/div[3]/div/h1")).isDisplayed();
         waitForRetry(2000);
-        click(searchForMensShoes.getMenShoesSize());
+        clickOn(searchForMensShoes.getMenShoesSize(),mens_size);
         waitForRetry(2000);
-        click(searchForMensShoes.getMenShoesColor());
+        clickOn(searchForMensShoes.getMenShoesColor(),color);
         waitForRetry(2000);
-        click(searchForMensShoes.getMenShoesPrice());
+        clickOn(searchForMensShoes.getMenShoesPrice(),price);
         waitForRetry(2000);
 
     }
 
     @When("Choose the first item and add them to the cart")
     public void choose_the_first_item_and_add_them_to_the_cart() throws InterruptedException {
-        driver.findElement(By.xpath("//*[@id=\"products\"]/article[3]/a")).click();
+        click(searchForMensShoes.getTheSelectedItemToBuy());
         log.info("size inside the item");
         waitForRetry(3000);
-        driver.findElement(By.xpath("//*[@id=\"buyBoxForm\"]/div[2]/fieldset[1]/div/div[1]")).click();
+        click(searchForMensShoes.getTheSizeInsideTheItemDescription());
         log.info("press add to cart first product");
         waitForRetry(3000);
-        driver.findElement(By.xpath("//*[@id=\"root\"]/div[5]/div[2]/div/div[4]/button")).click();
+        click(viewCart.getAddedToBagSighn());
     }
 
     @When("Check that all selected items are present in cart")
