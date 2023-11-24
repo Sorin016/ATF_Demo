@@ -1,35 +1,24 @@
 package hooks;
 
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.runner.RunWith;
-import org.openqa.selenium.WebDriver;
+import io.cucumber.java.After;
+import io.cucumber.java.Before;
 import org.openqa.selenium.chrome.ChromeDriver;
+import stepDefinition.AbstractStepDef;
 
-public class Hooks {
-    WebDriver driver=null;
-
-    public Hooks(WebDriver driver) {
-        this.driver=driver;
-    }
-
-//    @Before
-//    public void Afisare(){
-//        System.out.println("afisare la before nethod");
-//    }
-
+public class Hooks extends AbstractStepDef {
     @Before
-    public void chromeDriverSetUp(){
-        System.setProperty("webdriver.chrome.driver","src/main/resources/driver/chromedriver.exe");
-        driver=new ChromeDriver();
-        driver.navigate().to("https://www.google.com/");
+    public void beforeTest() {
+        System.setProperty("webdriver.chrome.driver", "src\\webdrivers\\chrome\\chromedriver.exe");
+        driver = new ChromeDriver();
+        driver.get(homePageUrl);
+        driver.manage().window().maximize();
     }
 
     @After
-    public void closeChromeDriver(){
-        driver.quit();
-        driver.close();
+    public void closeChromeDriver() {
+        log.info("Calling method to close the browser");
+//        driver.quit();
+//        driver.close();
     }
 }

@@ -13,14 +13,14 @@ public class WaitUtils {
     }
 
     public static <Z> Boolean waitUnitCondition(boolean condition, int timeout){
-        boolean retult=!condition;
+        boolean result=!condition;
         long timeOutInMillis= TimeUnit.SECONDS.toMillis(timeout);
         long start =System.currentTimeMillis();
 
-        while ((System.currentTimeMillis()-start)< timeOutInMillis && retult != condition){
+        while ((System.currentTimeMillis()-start)< timeOutInMillis ){
             waitForRetry(DEFAULT_RETRY_INTERVAL_MS);
         }
-        return retult;
+        return result;
     }
 
 

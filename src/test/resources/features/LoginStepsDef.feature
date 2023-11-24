@@ -1,4 +1,4 @@
-@Run
+
 Feature: Check the login page
 
   Scenario Outline: Check the login button is displayed

@@ -1,31 +1,29 @@
 package pages;
 
 import lombok.Getter;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.FindBy;
 @Getter
-public class LoginPage {
-     WebDriver driver;
-     //By logins=By.id("\"ap_email\"");
-    // By passwordLogin=By.xpath( "//*[@id=\"ap_password\"]");
+public class LoginPage extends PageObjects {
 
-    @FindBy(id = "\"ap_email\"")
-    WebElement logins;
+//    @FindBy(xpath = "//input[@name='email'")
+//    WebElement login;
+    @FindBy(xpath = "//*[@id=\"ap_email\"]")
+    WebElement login;
 
-    @FindBy(xpath = "//*[@id=\"ap_password\"]")
+    @FindBy(xpath = "//input[@name='password']")
     WebElement passwordLogin;
 
-    public LoginPage(WebDriver driver){
-        this.driver=driver;
-    }
+//    @FindBy(xpath = "//input[@id='sighInSubmit']")
+//    WebElement submitButton;
+    @FindBy(xpath = "//*[@id=\"signInSubmit\"]")
+    WebElement submitButton;
 
-    public void setLogin(String login){
-        logins.sendKeys(login);
-    }
-    public void setPassword(String password) {
-       passwordLogin.sendKeys(password);
+    @FindBy(xpath = "//*[@id=\"authportal-main-section\"]/div[2]/div/div/form/div/div/div/h1")
+    WebElement sighInTextOnLoginPage;
+
+    public LoginPage(WebDriver driver) {
+        super(driver);
     }
 }
