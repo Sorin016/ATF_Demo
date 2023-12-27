@@ -18,7 +18,7 @@ public class Hooks extends AbstractStepDef {
     @After
     public void closeChromeDriver() {
         log.info("Calling method to close the browser");
-//        driver.quit();
-//        driver.close();
+        driver.quit();
+       // driver.close();
     }
 }

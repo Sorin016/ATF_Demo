@@ -1,7 +1,7 @@
 Feature: Create new user and check that item is displayed
 
-  @Run
-  Scenario Outline: adsfadf
+
+  Scenario Outline: Login with a valid user and select an item
     Given User is on page home
     And User is click on opencart login icon
     And User insert <password> and <login>

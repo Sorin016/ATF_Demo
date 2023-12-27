@@ -6,9 +6,8 @@ import io.restassured.response.Response;
 import io.restassured.response.ResponseBody;
 import io.restassured.specification.RequestSpecification;
 import org.junit.Assert;
-import org.junit.Test;
 import org.openqa.selenium.JavascriptExecutor;
-import pages.LoginPageOpencart;
+import openCart.LoginPageOpencart;
 import util.WaitUtils;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -39,12 +38,12 @@ public class LoginToOpencart extends AbstractStepDef {
     @When("User is click on opencart login icon")
     public void user_is_click_on_opencart_login_icon() throws InterruptedException {
         loginPageOpencart = new LoginPageOpencart(driver);
-        click(loginPageOpencart.getMyAccountButton());
+        click(opencartHomePage.getMyAccountButton());
         waitForRetry(2000);
-        isDisplayed(loginPageOpencart.getMyAccountButton());
-        click(loginPageOpencart.getLoginButtonOnHomePage());
+        isDisplayed(opencartHomePage.getMyAccountButton());
+        click(opencartHomePage.getLoginButtonOnHomePage());
         waitForRetry(2000);
-        isDisplayed(loginPageOpencart.getLoginButtonOnHomePage());
+        isDisplayed(opencartHomePage.getLoginButtonOnHomePage());
     }
 
     @When("User insert {} and {}")
@@ -65,8 +64,8 @@ public class LoginToOpencart extends AbstractStepDef {
 
     @When("Click on the first item")
     public void click_on_the_first_item_API() throws InterruptedException {
-        isDisplayed(loginPageOpencart.getIphoneItemOnHomePage());
-        click(loginPageOpencart.getIphoneItemOnHomePage());
+        isDisplayed(opencartHomePage.getIphoneItemOnHomePage());
+        click(opencartHomePage.getIphoneItemOnHomePage());
     }
 
     @When("User is redirect to homepage")
@@ -77,14 +76,14 @@ public class LoginToOpencart extends AbstractStepDef {
 
     @When("User see the item imeges")
     public void user_see_the_item_imeges() throws InterruptedException {
-        isDisplayed(loginPageOpencart.getFirstIphoneImage());
-        click(loginPageOpencart.getFirstIphoneImage());
+        isDisplayed(iponeProductOpencart.getFirstIphoneImage());
+        click(iponeProductOpencart.getFirstIphoneImage());
         waitForRetry(1000);
         for (int i = 0; i <= 5; i++) {
-            click(loginPageOpencart.getClickNextImage());
+            click(iponeProductOpencart.getClickNextImage());
             waitForRetry(1000);
         }
-        click(loginPageOpencart.getCloseImage());
+        click(iponeProductOpencart.getCloseImage());
     }
 
     @When("Leave a review from {} for the selected item")
@@ -93,7 +92,7 @@ public class LoginToOpencart extends AbstractStepDef {
         //isDisplayed(loginPageOpencart.getReviewButtonssss());
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollBy(0,3500)", "");
-        click(loginPageOpencart.getReviewButtonssss());
+        click(iponeProductOpencart.getReviewButtonssss());
 //        isDisplayed(loginPageOpencart.getWriteAReviewArea());
 //        click(loginPageOpencart.getYourNameFromReviewArea());
 //        sendKey(loginPageOpencart.getYourNameFromReviewArea(),login);

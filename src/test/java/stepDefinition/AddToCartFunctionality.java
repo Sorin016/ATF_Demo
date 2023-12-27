@@ -25,11 +25,11 @@ public class AddToCartFunctionality extends AbstractStepDef {
         isDisplayed(searchForMensShoes.getMensShoesLogo());
 //        driver.findElement(By.xpath("//*[@id=\"main\"]/div/div/div/div[3]/div/h1")).isDisplayed();
         waitForRetry(2000);
-        clickOn(searchForMensShoes.getMenShoesSize(),mens_size);
+        click(searchForMensShoes.getMenShoesSize());
         waitForRetry(2000);
-        clickOn(searchForMensShoes.getMenShoesColor(),color);
+        click(searchForMensShoes.getMenShoesColor());
         waitForRetry(2000);
-        clickOn(searchForMensShoes.getMenShoesPrice(),price);
+        click(searchForMensShoes.getMenShoesPrice());
         waitForRetry(2000);
 
     }

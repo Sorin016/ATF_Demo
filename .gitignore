@@ -1,0 +1,15 @@
+.idea
+*.iws
+*.iml
+*.ipr
+*.jar
+*.class
+*.log
+# Mvn git versioning extension generated pom.xml
+.git-v*
+#Eclipse IDE
+*.html
+target/
+logs/
+.lst
+
