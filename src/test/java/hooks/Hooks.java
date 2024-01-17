@@ -1,35 +1,42 @@
 package hooks;
 
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.runner.RunWith;
+import actions.Actions;
+import driverFactory.DriverType;
+import io.cucumber.java.*;
+import lombok.SneakyThrows;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import stepDefinition.AbstractStepDef;
 
-public class Hooks {
-    WebDriver driver=null;
 
-    public Hooks(WebDriver driver) {
-        this.driver=driver;
-    }
 
-//    @Before
-//    public void Afisare(){
-//        System.out.println("afisare la before nethod");
-//    }
-
+public class Hooks extends AbstractStepDef {
     @Before
-    public void chromeDriverSetUp(){
-        System.setProperty("webdriver.chrome.driver","src/main/resources/driver/chromedriver.exe");
-        driver=new ChromeDriver();
-        driver.navigate().to("https://www.google.com/");
+    public void beforeTest() {
+        System.setProperty("webdriver.chrome.driver", "src\\webdrivers\\chrome\\chromedriver.exe");
+        driver = new ChromeDriver();
+        driver.get(homePageUrl);
+        driver.manage().window().maximize();
     }
 
     @After
-    public void closeChromeDriver(){
-        driver.quit();
-        driver.close();
+    public void closeChromeDriver() {
+        log.info("Calling method to close the browser");
+           driver.quit();
+           driver.close();
+    }
+
+    @SneakyThrows
+    @BeforeStep
+    public void takeScreenshotBeforeEachStep(Scenario scenario){
+        log.info("take a screenshot before steps");
+        Actions.takeScreenshot(scenario,driver);
+    }
+    @SneakyThrows
+    @AfterStep
+    public void takeScreenshotAfterEachStep(Scenario scenario){
+        log.info("take a screenshot after steps");
+        Actions.takeScreenshot(scenario,driver);
     }
 }

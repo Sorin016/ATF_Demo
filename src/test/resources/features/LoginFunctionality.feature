@@ -1,14 +1,17 @@
-@Run
-Feature: Check the login page
+Feature: Create new user
 
-  Scenario Outline: Check the login button is displayed
-    Given User open the browser
-    When user is searching for website
-    And user is on home page
-    And user is click on login icon
-    And user insert the <password> and <login>
-    Then login button is displayed
+  @Run
+  Scenario Outline: Register a new User
+    Given User is on page home
+    And User is click on opencart register button
+    And User inserts <firstName> and <lastName> and <email> and <password>
+    When An error message appear that say that <email> format is incorect
+    Then User click on newslatter button and Private Policy checkbox
+    And User is click on login icon
+    And User is on page home
+    And User is click on opencart login icon
+    And User enter the pass and log
 
     Examples:
-      | password    | login                   |
-      | samsungG900 | sorin.cucereavu@mail.ru |
+      | firstName | lastName | email                  | password   |
+      | sorin     | cuce     | sorin.cucereavumail.ru | sorinus123 |
