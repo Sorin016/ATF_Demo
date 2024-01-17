@@ -7,10 +7,10 @@ import org.openqa.selenium.support.FindBy;
 
 @Getter
 public class RegisterNewUserOpencart extends PageObjects{
-    @FindBy(xpath = "//*[@id=\"top\"]/div[2]/div[2]/ul/li[2]/div/a/span")
+    @FindBy(partialLinkText = "My Account")
     WebElement accountButtonOnHomePage;
 
-    @FindBy(xpath = "//*[@id=\"top\"]/div[2]/div[2]/ul/li[2]/div/ul/li[1]/a")
+    @FindBy(partialLinkText = "Register")
     WebElement registerButonOnHomePage;
 
     @FindBy(name ="firstname")
@@ -28,8 +28,11 @@ public class RegisterNewUserOpencart extends PageObjects{
     @FindBy(xpath = "//button[contains(text(),'Continue')]")
     WebElement continueButtonOnRegisterPage;
 
-    @FindBy(partialLinkText = "I have read and agree")
-    WebElement iRead;
+    @FindBy(name = "newsletter")
+    WebElement newsLetterButton;
+
+    @FindBy(name="agree")
+    WebElement agreeButton;
 
 
 

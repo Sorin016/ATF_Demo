@@ -5,9 +5,10 @@ import lombok.Getter;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+
 @Getter
-public class HomePage extends PageObjects{
-        //6pm
+public class HomePage extends PageObjects {
+    //6pm
     @FindBy(xpath = "//*[@id=\"root\"]/div[1]/header/div[1]/a/picture/img")
     WebElement homePageLogo;
 
@@ -15,11 +16,11 @@ public class HomePage extends PageObjects{
     WebElement loginButtonOnHomePage;
 
 
-        //Opencart
+    //Opencar
     @FindBy(xpath = "//*[@id=\"logo\"]/a/img")
     WebElement homePageLogoOpencart;
 
-    public HomePage(WebDriver driver){
+    public HomePage(WebDriver driver) {
         super(driver);
     }
 }

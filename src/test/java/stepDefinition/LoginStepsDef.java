@@ -7,15 +7,21 @@ import lombok.extern.log4j.Log4j2;
 import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
 import pages.GoogleSearchForWebsite;
 import pages.LoginPage;
+import util.DataKey;
 import util.PropretyLoader;
+import util.ScenarioContext;
 import util.WaitUtils;
 import  static io.restassured.RestAssured.*;
 import static actions.Actions.*;
 import static org.hamcrest.Matchers.is;
 import static rest.ApiEndpoint.*;
+import static util.DataKey.EMAIL;
+import static util.DataKey.PASSWORD;
 import static util.WaitUtils.waitForRetry;
 import static org.apache.http.HttpStatus.*;
 import static io.restassured.RestAssured.given;
@@ -61,9 +67,9 @@ public class LoginStepsDef extends AbstractStepDef {
     @When("User is click on login icon")
     public void user_is_click_on_login_icon() throws InterruptedException {
         loginPage = new LoginPage(driver);
-        click(homePage.getLoginButtonOnHomePage());
-        waitForRetry(2000);
-        isDisplayed(loginPage.getSighInTextOnLoginPage());
+        scrollUp(driver);
+        JavascriptExecutor executor = (JavascriptExecutor) driver;
+        executor.executeScript("arguments[0].click();", homePage.getHomePageLogoOpencart());
     }
 
     @When("User insert the {} and {}")
@@ -136,4 +142,15 @@ public class LoginStepsDef extends AbstractStepDef {
 
     }
 
+
+
+    @When("User enter the pass and log")
+    public void user_enter_the_password_and_login() {
+        loginPage = new LoginPage(driver);
+        String login=ScenarioContext.getData(EMAIL).toString();
+        String password=ScenarioContext.getData(PASSWORD).toString();
+        sendKey(registerNewUserOpencart.getEmailField(), login);
+        sendKey(registerNewUserOpencart.getPasswordField(),password);
+        waitForRetry(2000);
+    }
 }

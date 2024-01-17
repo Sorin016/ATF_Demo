@@ -12,6 +12,8 @@ import util.WaitUtils;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
+import java.io.IOException;
+
 import static actions.Actions.*;
 import static org.hamcrest.Matchers.is;
 import static util.WaitUtils.waitForRetry;
@@ -31,7 +33,7 @@ public class LoginToOpencart extends AbstractStepDef {
     }
 
     @When("User is on page home")
-    public void user_is_on_home_page() {
+    public void user_is_on_home_page() throws IOException {
         isDisplayed(homePage.getHomePageLogoOpencart());
     }
 
