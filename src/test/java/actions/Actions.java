@@ -27,7 +27,7 @@ public class Actions {
     }
 
     public static void click(WebElement element) throws InterruptedException {
-        Thread.sleep(5000);
+        Thread.sleep(3000);
         element.click();
     }
 
