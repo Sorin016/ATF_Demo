@@ -1,4 +1,4 @@
-@UI
+@UI @Run
 Feature: Add a new user
 
   Scenario Outline: Add new user
@@ -19,5 +19,5 @@ Feature: Add a new user
 
     Examples:
       | password | username |
-      | 123      | sorins |
+      | 123      | superMan2 |
 

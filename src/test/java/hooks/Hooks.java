@@ -1,13 +1,10 @@
 package hooks;
 
-
 import actions.Actions;
 import io.cucumber.java.*;
 import lombok.SneakyThrows;
 import org.openqa.selenium.chrome.ChromeDriver;
-import stepDefinition.Important.AbstractStepDef;
-
-
+import stepDefinition.important.AbstractStepDef;
 
 public class Hooks extends AbstractStepDef {
     @Before("@UI")
@@ -21,23 +18,21 @@ public class Hooks extends AbstractStepDef {
     @After("@UI")
     public void closeChromeDriver() {
         log.info("Calling method to close the browser");
-           driver.quit();
-        //   driver.close();
+        driver.close();
+        driver.quit();
     }
 
     @SneakyThrows
     @BeforeStep("@UI")
-    public void takeScreenshotBeforeEachStep(Scenario scenario){
+    public void takeScreenshotBeforeEachStep(Scenario scenario) {
         log.info("take a screenshot before steps");
-        Actions.takeScreenshot(scenario,driver);
+        Actions.takeScreenshot(scenario, driver);
     }
+
     @SneakyThrows
     @AfterStep("@UI")
-    public void takeScreenshotAfterEachStep(Scenario scenario){
+    public void takeScreenshotAfterEachStep(Scenario scenario) {
         log.info("take a screenshot after steps");
-        Actions.takeScreenshot(scenario,driver);
+        Actions.takeScreenshot(scenario, driver);
     }
-
-
-
 }

@@ -4,7 +4,7 @@ import lombok.Getter;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import pages.FunctionalImportantDarVechi.PageObjects;
+import pages.functionalImportantDarVechi.PageObjects;
 
 @Getter
 public class LoginPageOpencart extends PageObjects {

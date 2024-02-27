@@ -2,12 +2,12 @@
 Feature: Create a new Bank Account
 
   Scenario Outline: User create new bank account
-    Given User navigate to 'Register' page
+    Given User navigates to 'Register' page
     And User login with credentials <username> and <password>
     And User open new account from <customerId>
-    When User sent a transaction from <account> to <reiverAccount> with <amount>
-    And User select check the transaction by <account> and <date>
+    When User sent a transaction from <fromAccount> to <reiverAccount> with <amount>
+    And User selects check the transaction by <fromAccount> and <date>
 
     Examples:
-      | password | username | account | date       | reiverAccount | amount | customerId |
-      | 123      | dd       | 21669   | 02-23-2024 | 14676         | 13     | 16985      |
+      | password | username  | fromAccount | date       | reiverAccount | amount | customerId |
+      | 123      | superMan2 | 16119       | 02-28-2024 | 18006         | 13     | 13988      |
