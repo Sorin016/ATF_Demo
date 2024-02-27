@@ -4,8 +4,7 @@ import lombok.Getter;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
-import pages.PageObjects;
+import pages.FunctionalImportantDarVechi.PageObjects;
 @Getter
 public class OpencartHomePage extends PageObjects {
     @FindBy(xpath = "/html/body/nav/div[2]/div[2]/ul/li[2]/div/a/span")
