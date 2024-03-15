@@ -4,15 +4,15 @@ import browserManager.ChromeManager;
 
 public class DriverManagerFactory {
 
-    public static DriverManager driverManager(DriverType type){
+    public static DriverManager driverManager(DriverType type) {
         DriverManager driverManager;
 
-        switch (type){
+        switch (type) {
             case CHROME:
-                driverManager=new ChromeManager();
+                driverManager = new ChromeManager();
                 break;
             default:
-                driverManager=new ChromeManager();
+                driverManager = new ChromeManager();
         }
         return driverManager;
     }

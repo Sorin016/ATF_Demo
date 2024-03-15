@@ -7,5 +7,10 @@ public enum DataKey {
     BANK_USER_PASSWORD,
     CHECKING,
     SAVINGS,
-    NEW_ACCOUNT_ID;
+    NEW_ACCOUNT_ID,
+    DEFAULT_ACCOUNT_ID,
+    AMOUNT,
+    API_USERNAME,
+    API_PASSWORD,
+    CUSTOMER_ID;
 }

@@ -10,5 +10,5 @@ Feature: Create a new Bank Account
     Then User navigate and check that transfer was with success
 
     Examples:
-      | pass | log    | type    | amount |
-      | 123  | sorins | SAVINGS | 5      |
+      | pass | log       | type    | amount |
+      | 123  | superMan2 | SAVINGS | 5      |
