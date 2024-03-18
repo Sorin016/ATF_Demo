@@ -35,6 +35,7 @@ public class MainMeniu extends PageObjects {
 
     @FindBy(xpath = "//a[contains(text(),'Log Out')]")
     WebElement logOut;
+
     public MainMeniu(WebDriver driver) {
         super(driver);
     }

@@ -8,6 +8,5 @@ public class RandomStream {
         UUID randomUUID = UUID.randomUUID();
 
         return randomUUID.toString().replaceAll("_", "");
-
     }
 }

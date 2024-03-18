@@ -17,7 +17,7 @@ import static util.WaitUtils.waitForRetry;
 public class NewBankAccount extends AbstractStepDef {
 
     @Given("User login with valid credentials {} and {}")
-    public void user_login_with_valid_credentials_pass_and_log(String pass, String login) throws InterruptedException {
+    public void loginWithValidCredentialsPassAndLog(String pass, String login) throws InterruptedException {
         isDisplayed(paraBankHomePage.getParaBankLogoOnTheHomePage());
         highlightElement(paraBankHomePage.getParaBankLogoOnTheHomePage(), driver);
         highlightElement(paraBankHomePage.getUserNameLogin(), driver);
@@ -29,14 +29,14 @@ public class NewBankAccount extends AbstractStepDef {
     }
 
     @When("User clicks on 'Open new accout'")
-    public void user_clicks_on_Open_new_accout() throws InterruptedException {
+    public void clickOnOpenNewAccout() throws InterruptedException {
         highlightElement(mainMeniu.getOpenNewAccount(), driver);
         click(mainMeniu.getOpenNewAccount());
         assertEquals("Open New Account", mainMeniu.getOpenNewAccount().getText());
     }
 
     @When("User select {} of account")
-    public void user_select_type_of_account(String type) throws InterruptedException {
+    public void selectTypeOfAccount(String type) throws InterruptedException {
         highlightElement(openNewAccount.getType(), driver);
         click(openNewAccount.getType());
         if (type.equals("CHECKING")) {
@@ -55,7 +55,7 @@ public class NewBankAccount extends AbstractStepDef {
     }
 
     @When("User open new account details")
-    public void user_open_new_account_details() throws InterruptedException {
+    public void openNewAccountDetails() throws InterruptedException {
         click(openNewAccount.getNewAccountID());
         highlightElement(accountDetails.getAccountDetailsText(), driver);
         waitForRetry(2000);
@@ -66,7 +66,7 @@ public class NewBankAccount extends AbstractStepDef {
     }
 
     @When("Using new account transfer {} to another amount")
-    public void using_new_account_transfer_amount_to_another_amount(String amount) throws InterruptedException {
+    public void usingNewAccountTransferAmountToAnotherAmount(String amount) throws InterruptedException {
         click(mainMeniu.getTransferFunds());
         waitForRetry(2000);
         highlightElement(mainMeniu.getTransferFunds(), driver);
@@ -82,7 +82,7 @@ public class NewBankAccount extends AbstractStepDef {
     }
 
     @Then("User navigate and check that transfer was with success")
-    public void user_navigate_and_check_that_transfer_was_with_success() throws InterruptedException {
+    public void navigateAndCheckThatTransferWasWithSuccess() throws InterruptedException {
         click(mainMeniu.getAccountsOverview());
         highlightElement(accountsOverview.getAccountOverviewText(), driver);
         isDisplayed(accountDetails.getAccountsTable());

@@ -7,7 +7,6 @@ import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
 import stepDefinition.important.AbstractStepDef;
 import util.ScenarioContext;
 
@@ -27,19 +26,19 @@ public class UserSteps extends AbstractStepDef {
     private List<UserInputFields> foundUserInputFields;
 
     @Given("User is on main home page")
-    public void user_is_on_main_home_page() {
+    public void displaingMainHomePage() {
         isDisplayed(paraBankHomePage.getParaBankLogoOnTheHomePage());
         highlightElement(paraBankHomePage.getParaBankLogoOnTheHomePage(), driver);
     }
 
     @And("User clicks on 'Register' button")
-    public void user_is_clicks_on_Register_button() throws InterruptedException {
+    public void clickOnRegisterButton() throws InterruptedException {
         click(paraBankHomePage.getRegisterButtonOnHomePage());
         assertEquals("Signing up is easy!", registerPage.getSighUpIsEasyPhraseOnRegistPage().getText());
     }
 
     @Then("{} and {} is inserted")
-    public void password_and_username_is_inserted(String password, String username) {
+    public void insertPasswordAndUsername(String password, String username) {
         highlightElement(registerPage.getUserName(), driver);
         highlightElement(registerPage.getPassword(), driver);
         highlightElement(registerPage.getConfirmedPassword(), driver);
@@ -51,7 +50,7 @@ public class UserSteps extends AbstractStepDef {
     }
 
     @Then("User inserts the few fields")
-    public void user_inserts_the_few_fields(DataTable table) throws InterruptedException {
+    public void insertTheFewFields(DataTable table) throws InterruptedException {
         store = new Store();
         foundUserInputFields = new ArrayList<>();
         List<Map<String, String>> rows = table.asMaps(String.class, String.class);
@@ -77,7 +76,7 @@ public class UserSteps extends AbstractStepDef {
     }
 
     @And("Not all mandatory fields are inserted error appears")
-    public void not_all_mandatory_fields_are_inserted_error_appears(DataTable table) {
+    public void displaingNotAllMandatoryFieldsAreInsertedError(DataTable table) {
         store = new Store();
         foundUserInputFields = new ArrayList<>();
         List<Map<String, String>> rows = table.asMaps(String.class, String.class);
@@ -92,7 +91,7 @@ public class UserSteps extends AbstractStepDef {
     }
 
     @Then("User inserts the rest of the mandatory fields")
-    public void user_inserts_the_rest_of_the_mandatory_fields(DataTable table) throws InterruptedException {
+    public void insertsTheRestOfTheMandatoryFields(DataTable table) throws InterruptedException {
         store = new Store();
         foundUserInputFields = new ArrayList<>();
         List<Map<String, String>> rows = table.asMaps(String.class, String.class);
@@ -113,7 +112,7 @@ public class UserSteps extends AbstractStepDef {
     }
 
     @Then("User succesfully register")
-    public void user_succesfully_register() {
+    public void registerSuccesfully() {
         assertEquals("Your account was created successfully. You are now logged in.",
                 successfulRegistrecion.getAccountCreationWithSuccess().getText());
         String UserName = ScenarioContext.getData(USERNAME).toString();
@@ -121,7 +120,7 @@ public class UserSteps extends AbstractStepDef {
     }
 
     @And("User log-out")
-    public void user_log_out() throws InterruptedException {
+    public void logOut() throws InterruptedException {
         click(mainMeniu.getLogOut());
         assertEquals("Customer Login", paraBankHomePage.getCustomerLogin().getText());
     }

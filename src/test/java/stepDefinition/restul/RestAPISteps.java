@@ -4,8 +4,6 @@ import io.cucumber.java.en.When;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
-import org.testng.annotations.Test;
-
 
 import static io.restassured.RestAssured.baseURI;
 import static io.restassured.RestAssured.given;
@@ -20,14 +18,13 @@ import static util.ScenarioContext.saveData;
 
 public class RestAPISteps {
     @When("User navigates to 'Register' page")
-    public void user_navigates_to_Register_page() {
+    public void navigatesToRegisterPage() {
         baseURI = "https://parabank.parasoft.com";
         given().get("/parabank/register.htm").then().statusCode(SC_OK).log().all();
     }
 
-    @Test
     @When("User login with credentials {} and {}")
-    public void user_login_with_credentials_username_and_password(String username, String password) {
+    public void loginWithCredentialsUsernameAndPassword(String username, String password) {
         RequestSpecification requestSpecification = RestAssured.given();
         requestSpecification.baseUri("https://parabank.parasoft.com/parabank");
         requestSpecification.basePath("/login.htm");
@@ -40,13 +37,11 @@ public class RestAPISteps {
         assertEquals(SC_OK, response.statusCode());
     }
 
-    @Test
-    @When("User open new account from {}")
-    public void user_open_new_account_from_accountId(int customerId) {
+    @When("User with {} open new account from {}")
+    public void openNewAccountFromAccountId(int customerId, int accountFrom) {
         RequestSpecification requestSpecification = RestAssured.given();
-        int accountFrom=16119;
         requestSpecification.baseUri("https://parabank.parasoft.com/parabank");
-        requestSpecification.basePath("/services_proxy/bank/createAccount?customerId=" + customerId + "&newAccountType=0&fromAccountId=" +accountFrom+"");
+        requestSpecification.basePath("/services_proxy/bank/createAccount?customerId=" + customerId + "&newAccountType=0&fromAccountId=" + accountFrom + "");
         Response response = requestSpecification.auth().basic(getData(API_USERNAME).toString(), getData(API_PASSWORD).toString()).get();
         requestSpecification.formParam("customerId", customerId);
         requestSpecification.formParam("newAccountType", 0);
@@ -55,9 +50,8 @@ public class RestAPISteps {
         assertEquals(SC_OK, response.statusCode());
     }
 
-    @Test
     @When("User sent a transaction from {} to {} with {}")
-    public void user_sent_a_transaction_from_account_to_reiverAccount_with_amount(String account, String reveiverAccount, String amount) {
+    public void sentTransactionFromAccountToReiverAccountWithAmount(String account, String reveiverAccount, String amount) {
         RequestSpecification requestSpecification = RestAssured.given();
         requestSpecification.baseUri("https://parabank.parasoft.com/parabank");
         requestSpecification.basePath("/services_proxy/bank/transfer?fromAccountId=" + account + "" + "&toAccountId=" + reveiverAccount + "&amount=" + amount + "");
@@ -74,7 +68,7 @@ public class RestAPISteps {
     }
 
     @When("User selects check the transaction by {} and {}")
-    public void user_selects_check_the_transaction_by_account_and_date(String acount, String date) {
+    public void selectCheckTheTransactionByAccountAndDate(String acount, String date) {
         RequestSpecification requestSpecification = RestAssured.given();
         requestSpecification.baseUri("https://parabank.parasoft.com/parabank");
         requestSpecification.basePath("/services_proxy/bank/accounts/" + acount + "/transactions/onDate/" + date + "");
