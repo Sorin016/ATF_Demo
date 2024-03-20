@@ -18,6 +18,6 @@ Feature: Add a new user
     Then User log-out
 
     Examples:
-      | password | username  |
-      | 123      | superMan |
+      | password | username |
+      | 123      | superM   |
 

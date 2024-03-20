@@ -1,4 +1,4 @@
-package stepDefinition.important;
+package stepDefinition;
 
 import lombok.Getter;
 import org.openqa.selenium.JavascriptException;
@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import pages.paraBankModules.*;
+import pages.*;
 import util.PropretyLoader;
 import util.RandomStream;
 

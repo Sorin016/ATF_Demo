@@ -4,7 +4,7 @@ import actions.Actions;
 import io.cucumber.java.*;
 import lombok.SneakyThrows;
 import org.openqa.selenium.chrome.ChromeDriver;
-import stepDefinition.important.AbstractStepDef;
+import stepDefinition.AbstractStepDef;
 
 public class Hooks extends AbstractStepDef {
     @Before("@UI")

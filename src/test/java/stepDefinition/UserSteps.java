@@ -1,4 +1,4 @@
-package stepDefinition.restul;
+package stepDefinition;
 
 import forDataTable.ErrorMessages;
 import forDataTable.Store;
@@ -7,7 +7,6 @@ import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
-import stepDefinition.important.AbstractStepDef;
 import util.ScenarioContext;
 
 import java.util.ArrayList;
