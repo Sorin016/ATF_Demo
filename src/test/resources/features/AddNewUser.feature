@@ -1,4 +1,4 @@
-@UI @Run
+@UI
 Feature: Add a new user
 
   Scenario Outline: Add new user
@@ -18,6 +18,6 @@ Feature: Add a new user
     Then User log-out
 
     Examples:
-      | password | username |
-      | 123      | superMan2 |
+      | password | username  |
+      | 123      | superMan |
 

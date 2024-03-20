@@ -19,6 +19,7 @@ public class TransferFunds extends PageObjects {
 
     @FindBy(xpath = "//input[@value='Transfer']")
     WebElement transferButton;
+
     public TransferFunds(WebDriver driver) {
         super(driver);
     }

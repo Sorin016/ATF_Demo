@@ -14,6 +14,7 @@ public class Store {
     public void addErrorMessageValues(ErrorMessages errorMessages) {
         this.errorMessages.add(errorMessages);
     }
+
     public void addInputFieldsValue(UserInputFields userInputFields) {
         this.userInputFields.add(userInputFields);
     }
@@ -37,6 +38,4 @@ public class Store {
                 .filter(userInputFields -> Objects.equals(author, userInputFields.getAddress()))
                 .collect(Collectors.toList());
     }
-
-
 }

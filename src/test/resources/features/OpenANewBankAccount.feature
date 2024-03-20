@@ -11,4 +11,4 @@ Feature: Create a new Bank Account
 
     Examples:
       | pass | log       | type    | amount |
-      | 123  | superMan2 | SAVINGS | 5      |
+      | 123  | superMan | SAVINGS | 5      |
