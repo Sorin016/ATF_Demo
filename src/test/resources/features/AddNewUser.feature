@@ -14,10 +14,12 @@ Feature: Add a new user
     And User inserts the rest of the mandatory fields
       | city     | state    | zipCode | phone  | ssn   |
       | Chisinau | Chisinau | 2828    | 790377 | 12345 |
-    When User succesfully register
+    When User successfully register
     Then User log-out
 
     Examples:
-      | password | username  |
-      | 123      | superMan |
+      | password | username |
+      | 123      | sup    |
+#      | 123      | super1   |
+#      | 123      | super2   |
 

@@ -9,6 +9,6 @@ import io.cucumber.junit.Cucumber;
         glue = {"stepDefinition", "hooks"},
         features = "src/test/resources/features",
         tags = "@Run",
-        plugin = {"pretty", "html:target/HtmlReort.htm"})
+        plugin = {"json:target/cucumber.json"})
 public class TestRunner {
 }
