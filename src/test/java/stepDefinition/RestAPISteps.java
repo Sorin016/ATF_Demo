@@ -1,4 +1,4 @@
-package stepDefinition.restul;
+package stepDefinition;
 
 import io.cucumber.java.en.When;
 import io.restassured.RestAssured;

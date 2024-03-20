@@ -10,4 +10,4 @@ Feature: Create a new Bank Account
 
     Examples:
       | password | username | fromAccount | date       | reiverAccount | amount | customerId |
-      | 123      | superMan | 14010       | 03-20-2024 | 14232         | 11     | 12878      |
+      | 123      | superM   | 16341       | 03-20-2024 | 16563         | 11     | 14765      |
