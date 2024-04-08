@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 @Getter
-public class RegisterPage extends PageObjects {
+public class RegisterPage extends ObjectsPage {
 
     @FindBy(xpath = "//h1[contains(text(),'Signing up is easy!')]")
     WebElement sighUpIsEasyPhraseOnRegistPage;
@@ -44,7 +44,7 @@ public class RegisterPage extends PageObjects {
     @FindBy(xpath = "//input[@id='repeatedPassword']")
     WebElement confirmedPassword;
 
-    @FindBy(xpath = "//tbody/tr[13]/td[2]/input[1]")
+    @FindBy(xpath = "//input[@value='Register']")
     WebElement registerButton;
 
     public RegisterPage(WebDriver driver) {
