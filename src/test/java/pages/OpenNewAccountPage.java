@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 @Getter
-public class OpenNewAccount extends PageObjects {
+public class OpenNewAccountPage extends PageObjectsPage {
 
     @FindBy(xpath = "//h1[contains(text(),'Open New Account')]")
     WebElement openNewAccountText;
@@ -35,7 +35,7 @@ public class OpenNewAccount extends PageObjects {
     @FindBy(xpath = "//select[@id='fromAccountId']")
     WebElement defauldAccountID;
 
-    public OpenNewAccount(WebDriver driver) {
+    public OpenNewAccountPage(WebDriver driver) {
         super(driver);
     }
 }

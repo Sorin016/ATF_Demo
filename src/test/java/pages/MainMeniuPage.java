@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 @Getter
-public class MainMeniu extends PageObjects {
+public class MainMeniuPage extends PageObjectsPage {
 
     @FindBy(xpath = "//h2[contains(text(),'Account Services')]")
     WebElement accountServices;
@@ -35,7 +35,7 @@ public class MainMeniu extends PageObjects {
     @FindBy(xpath = "//a[contains(text(),'Log Out')]")
     WebElement logOut;
 
-    public MainMeniu(WebDriver driver) {
+    public MainMeniuPage(WebDriver driver) {
         super(driver);
     }
 }

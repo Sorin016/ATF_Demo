@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 @Getter
-public class AccountsOverview extends PageObjects {
+public class AccountsOverviewPage extends PageObjectsPage {
 
     @FindBy(xpath = "//h1[contains(text(),'Accounts Overview')]")
     WebElement accountOverviewText;
@@ -17,7 +17,7 @@ public class AccountsOverview extends PageObjects {
     @FindBy(xpath = "//*[@id=\"accountTable\"]/tbody")
     WebElement accountTable;
 
-    public AccountsOverview(WebDriver driver) {
+    public AccountsOverviewPage(WebDriver driver) {
         super(driver);
     }
 }

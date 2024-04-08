@@ -12,7 +12,7 @@ import static util.ScenarioContext.getData;
 import static util.ScenarioContext.saveData;
 import static util.WaitUtils.waitForRetry;
 
-public class NewBankAccount extends AbstractStepDef {
+public class NewBankAccountStepDef extends AbstractStepDef {
 
     @Given("User login with valid credentials {} and {}")
     public void loginWithValidCredentialsPassAndLog(String pass, String login) throws InterruptedException {
@@ -23,69 +23,71 @@ public class NewBankAccount extends AbstractStepDef {
         sendKey(paraBankHomePage.getUserNameLogin(), login);
         sendKey(paraBankHomePage.getPasswordLogin(), pass);
         click(paraBankHomePage.getLoginButton());
-        assertEquals("Account Services", mainMeniu.getAccountServices().getText());
+        assertEquals("Account Services", mainMeniuPage.getAccountServices().getText());
     }
 
     @When("User clicks on 'Open new accout'")
     public void clickOnOpenNewAccout() throws InterruptedException {
-        highlightElement(mainMeniu.getOpenNewAccount(), driver);
-        click(mainMeniu.getOpenNewAccount());
-        assertEquals("Open New Account", mainMeniu.getOpenNewAccount().getText());
+        highlightElement(mainMeniuPage.getOpenNewAccount(), driver);
+        click(mainMeniuPage.getOpenNewAccount());
+        assertEquals("Open New Account", mainMeniuPage.getOpenNewAccount().getText());
     }
 
     @When("User select {} of account")
     public void selectTypeOfAccount(String type) throws InterruptedException {
-        highlightElement(openNewAccount.getType(), driver);
-        click(openNewAccount.getType());
+        highlightElement(openNewAccountPage.getType(), driver);
+        click(openNewAccountPage.getType());
         if (type.equals("CHECKING")) {
-            click(openNewAccount.getCheckingAccount());
-            saveData(CHECKING, openNewAccount.getCheckingAccount().getText());
+            click(openNewAccountPage.getCheckingAccount());
+            saveData(CHECKING, openNewAccountPage.getCheckingAccount().getText());
         } else {
-            click(openNewAccount.getSavingsAccount());
-            saveData(SAVINGS, openNewAccount.getSavingsAccount().getText());
+            click(openNewAccountPage.getSavingsAccount());
+            saveData(SAVINGS, openNewAccountPage.getSavingsAccount().getText());
         }
-        saveData(DEFAULT_ACCOUNT_ID, openNewAccount.getDefauldAccountID().getText());
-        click(openNewAccount.getOpenNewAccountButton());
+        saveData(DEFAULT_ACCOUNT_ID, openNewAccountPage.getDefauldAccountID().getText());
+        click(openNewAccountPage.getOpenNewAccountButton());
         waitForRetry(2000);
-        assertEquals("Account Opened!", openNewAccount.getAccountOpened().getText());
-        assertEquals("Your new account number:", openNewAccount.getYourAccountNumberText().getText());
-        saveData(NEW_ACCOUNT_ID, openNewAccount.getNewAccountID().getText());
+        assertEquals("Account Opened!", openNewAccountPage.getAccountOpened().getText());
+        assertEquals("Your new account number:", openNewAccountPage.getYourAccountNumberText().getText());
+        saveData(NEW_ACCOUNT_ID, openNewAccountPage.getNewAccountID().getText());
     }
 
     @When("User open new account details")
     public void openNewAccountDetails() throws InterruptedException {
-        click(openNewAccount.getNewAccountID());
-        highlightElement(accountDetails.getAccountDetailsText(), driver);
+        click(openNewAccountPage.getNewAccountID());
+        highlightElement(accountDetailsPage.getAccountDetailsText(), driver);
         waitForRetry(2000);
-        assertEquals(getData(NEW_ACCOUNT_ID), accountDetails.getAccountId().getText());
-        assertEquals(getData(SAVINGS), accountDetails.getAccountType().getText());
-        log.info("New account id is " + accountDetails.getAccountId().getText() +
-                " New account type is " + accountDetails.getAccountType().getText());
+        assertEquals(getData(NEW_ACCOUNT_ID), accountDetailsPage.getAccountId().getText());
+        if (accountDetailsPage.getAccountType().getText().equals(getData(SAVINGS))) {
+            log.info("SAVINGS");
+        } else log.info("CHECKING");
+        log.info("New account id is " + accountDetailsPage.getAccountId().getText() +
+                " New account type is " + accountDetailsPage.getAccountType().getText());
     }
 
     @When("Using new account transfer {} to another amount")
     public void usingNewAccountTransferAmountToAnotherAmount(String amount) throws InterruptedException {
-        click(mainMeniu.getTransferFunds());
+        click(mainMeniuPage.getTransferFunds());
         waitForRetry(2000);
-        highlightElement(mainMeniu.getTransferFunds(), driver);
-        sendKey(transferFunds.getTransferFundsAmount(), amount);
-        click(transferFunds.getFromAccountId());
-        sendKey(transferFunds.getFromAccountId(), getData(DEFAULT_ACCOUNT_ID).toString());
+        highlightElement(mainMeniuPage.getTransferFunds(), driver);
+        sendKey(transferFundsPage.getTransferFundsAmount(), amount);
+        click(transferFundsPage.getFromAccountId());
+        sendKey(transferFundsPage.getFromAccountId(), getData(DEFAULT_ACCOUNT_ID).toString());
         waitForRetry(1000);
-        click(transferFunds.getToAccountId());
-        sendKey(transferFunds.getToAccountId(), getData(NEW_ACCOUNT_ID).toString());
-        click(transferFunds.getTransferButton());
+        click(transferFundsPage.getToAccountId());
+        sendKey(transferFundsPage.getToAccountId(), getData(NEW_ACCOUNT_ID).toString());
+        click(transferFundsPage.getTransferButton());
         log.info("from account " + getData(DEFAULT_ACCOUNT_ID).toString() +
                 " to account " + getData(NEW_ACCOUNT_ID).toString());
     }
 
     @Then("User navigate and check that transfer was with success")
     public void navigateAndCheckThatTransferWasWithSuccess() throws InterruptedException {
-        click(mainMeniu.getAccountsOverview());
-        highlightElement(accountsOverview.getAccountOverviewText(), driver);
-        isDisplayed(accountDetails.getAccountsTable());
+        click(mainMeniuPage.getAccountsOverview());
+        highlightElement(accountsOverviewPage.getAccountOverviewText(), driver);
+        isDisplayed(accountDetailsPage.getAccountsTable());
         String link = "//a[contains(text(),".concat(getData(NEW_ACCOUNT_ID).toString());
-//        List<WebElement> elems = accountsOverview.getAccountTable();
+//        List<WebElement> elems = accountsOverviewPage.getAccountTable();
 //        for (WebElement rowElem : elems)
 //        {
 //            if(rowElem.getText().contains(getData(NEW_ACCOUNT_ID).toString()))

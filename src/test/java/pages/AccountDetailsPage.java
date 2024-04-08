@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 @Getter
-public class AccountDetails extends PageObjects {
+public class AccountDetailsPage extends PageObjectsPage {
 
     @FindBy(xpath = "//h1[contains(text(),'Account Details')]")
     WebElement accountDetailsText;
@@ -20,7 +20,7 @@ public class AccountDetails extends PageObjects {
     @FindBy(xpath = "//table[@id='accountTable']/tbody/tr/td")
     WebElement accountsTable;
 
-    public AccountDetails(WebDriver driver) {
+    public AccountDetailsPage(WebDriver driver) {
         super(driver);
     }
 }

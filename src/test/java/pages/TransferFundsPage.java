@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 @Getter
-public class TransferFunds extends PageObjects {
+public class TransferFundsPage extends PageObjectsPage {
     @FindBy(xpath = "//input[@id='amount']")
     WebElement transferFundsAmount;
 
@@ -19,7 +19,7 @@ public class TransferFunds extends PageObjects {
     @FindBy(xpath = "//input[@value='Transfer']")
     WebElement transferButton;
 
-    public TransferFunds(WebDriver driver) {
+    public TransferFundsPage(WebDriver driver) {
         super(driver);
     }
 }

@@ -9,7 +9,6 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import util.ScenarioContext;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -20,9 +19,8 @@ import static util.DataKey.USERNAME;
 import static util.HighlightElement.highlightElement;
 import static util.ScenarioContext.*;
 
-public class UserSteps extends AbstractStepDef {
+public class UserStepsDef extends AbstractStepDef {
     private Store store;
-    private List<UserInputFields> foundUserInputFields;
 
     @Given("User is on main home page")
     public void displaingMainHomePage() {
@@ -51,7 +49,6 @@ public class UserSteps extends AbstractStepDef {
     @Then("User inserts the few fields")
     public void insertTheFewFields(DataTable table) throws InterruptedException {
         store = new Store();
-        foundUserInputFields = new ArrayList<>();
         List<Map<String, String>> rows = table.asMaps(String.class, String.class);
 
         for (Map<String, String> columns : rows) {
@@ -77,22 +74,20 @@ public class UserSteps extends AbstractStepDef {
     @And("Not all mandatory fields are inserted error appears")
     public void displaingNotAllMandatoryFieldsAreInsertedError(DataTable table) {
         store = new Store();
-        foundUserInputFields = new ArrayList<>();
         List<Map<String, String>> rows = table.asMaps(String.class, String.class);
         for (Map<String, String> columns : rows) {
             store.addErrorMessageValues(new ErrorMessages(columns.get("cityIsRequired"), columns.get("stateIsRequired"),
                     columns.get("zipCodeIsRequired"), columns.get("socialSecurityNumberIsRequired")));
-            assertEquals(columns.get("cityIsRequired"), registerNewUserErrors.getCityEmptyError().getText());
-            assertEquals(columns.get("stateIsRequired"), registerNewUserErrors.getStateEmptyError().getText());
-            assertEquals(columns.get("zipCodeIsRequired"), registerNewUserErrors.getZipCodeEmptyError().getText());
-            assertEquals(columns.get("socialSecurityNumberIsRequired"), registerNewUserErrors.getSsnEmptyError().getText());
+            assertEquals(columns.get("cityIsRequired"), registerNewUserErrorsPage.getCityEmptyError().getText());
+            assertEquals(columns.get("stateIsRequired"), registerNewUserErrorsPage.getStateEmptyError().getText());
+            assertEquals(columns.get("zipCodeIsRequired"), registerNewUserErrorsPage.getZipCodeEmptyError().getText());
+            assertEquals(columns.get("socialSecurityNumberIsRequired"), registerNewUserErrorsPage.getSsnEmptyError().getText());
         }
     }
 
     @Then("User inserts the rest of the mandatory fields")
     public void insertsTheRestOfTheMandatoryFields(DataTable table) throws InterruptedException {
         store = new Store();
-        foundUserInputFields = new ArrayList<>();
         List<Map<String, String>> rows = table.asMaps(String.class, String.class);
 
         for (Map<String, String> columns : rows) {
@@ -110,17 +105,25 @@ public class UserSteps extends AbstractStepDef {
         }
     }
 
-    @Then("User succesfully register")
-    public void registerSuccesfully() {
+    @Then("User registers with {}")
+    public void  registerNewUser(String result) {
+        if(result.contains("success")){
         assertEquals("Your account was created successfully. You are now logged in.",
-                successfulRegistrecion.getAccountCreationWithSuccess().getText());
+                successfulRegistrecionPage.getAccountCreationWithSuccess().getText());
         String UserName = ScenarioContext.getData(USERNAME).toString();
-        assertEquals(successfulRegistrecion.getWlecome().getText(), "Welcome " + UserName);
+        assertEquals(successfulRegistrecionPage.getWlecome().getText(), "Welcome " + UserName);
+    }
+        else {
+            assertEquals("This username already exists.",
+                    registerNewUserErrorsPage.getDublicateUserErrorMessage().getText());
+            highlightElement(registerNewUserErrorsPage.getDublicateUserErrorMessage(),driver);
+        }
     }
 
-    @And("User log-out")
+
+    @Then("User log-out")
     public void logOut() throws InterruptedException {
-        click(mainMeniu.getLogOut());
+        click(mainMeniuPage.getLogOut());
         assertEquals("Customer Login", paraBankHomePage.getCustomerLogin().getText());
     }
 
