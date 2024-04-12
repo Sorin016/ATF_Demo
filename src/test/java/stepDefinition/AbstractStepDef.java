@@ -29,6 +29,7 @@ public class AbstractStepDef {
     public AccountDetailsPage accountDetailsPage = new AccountDetailsPage(driver);
     public TransferFundsPage transferFundsPage = new TransferFundsPage(driver);
     public AccountsOverviewPage accountsOverviewPage = new AccountsOverviewPage(driver);
+    public BillPaymentPage billPaymentPage=new BillPaymentPage(driver);
     public RandomStream randomStream = new RandomStream();
     protected ChromeOptions options = new ChromeOptions();
     protected Logger log = Logger.getLogger((this.getClass().getName()));
