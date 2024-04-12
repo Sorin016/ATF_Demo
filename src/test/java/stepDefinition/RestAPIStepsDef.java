@@ -16,14 +16,14 @@ import static util.ScenarioContext.getData;
 import static util.ScenarioContext.saveData;
 
 
-public class RestAPISteps {
+public class RestAPIStepsDef {
     @When("User navigates to 'Register' page")
     public void navigatesToRegisterPage() {
         baseURI = "https://parabank.parasoft.com";
         given().get("/parabank/register.htm").then().statusCode(SC_OK).log().all();
     }
 
-    @When("User login with credentials {} and {}")
+    @When("User logins with credentials {} and {}")
     public void loginWithCredentialsUsernameAndPassword(String username, String password) {
         RequestSpecification requestSpecification = RestAssured.given();
         requestSpecification.baseUri("https://parabank.parasoft.com/parabank");
@@ -50,7 +50,7 @@ public class RestAPISteps {
         assertEquals(SC_OK, response.statusCode());
     }
 
-    @When("User sent a transaction from {} to {} with {}")
+    @When("User sents a transaction from {} to {} with {}")
     public void sentTransactionFromAccountToReiverAccountWithAmount(String account, String reveiverAccount, String amount) {
         RequestSpecification requestSpecification = RestAssured.given();
         requestSpecification.baseUri("https://parabank.parasoft.com/parabank");
@@ -67,7 +67,7 @@ public class RestAPISteps {
         assertTrue(response.body().asString().contains(account));
     }
 
-    @When("User selects check the transaction by {} and {}")
+    @When("User check the transaction by {} and {}")
     public void selectCheckTheTransactionByAccountAndDate(String acount, String date) {
         RequestSpecification requestSpecification = RestAssured.given();
         requestSpecification.baseUri("https://parabank.parasoft.com/parabank");

@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 @Getter
-public class SuccessfulRegistrecionPage extends ObjectsPage {
+public class SuccessfulRegistrecionPage extends PageObjectsPage {
 
     @FindBy(xpath = "//p[contains(text(),'Your account was created successfully. You are now')]")
     WebElement accountCreationWithSuccess;

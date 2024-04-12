@@ -6,7 +6,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 @Getter
-public class TransferFundsPage extends ObjectsPage {
+public class TransferFundsPage extends PageObjectsPage {
+
     @FindBy(xpath = "//input[@id='amount']")
     WebElement transferFundsAmount;
 

@@ -5,6 +5,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
 
+
 import static actions.Actions.*;
 import static org.junit.Assert.assertEquals;
 import static util.DataKey.*;
@@ -15,8 +16,8 @@ import static util.WaitUtils.waitForRetry;
 
 public class NewBankAccountStepDef extends AbstractStepDef {
     final static int TIME = 2000;
-
-    @Given("User logins with valid credentials {} and {}")
+  
+   @Given("User login with valid credentials {} and {}")
     public void loginWithValidCredentialsPassAndLog(String pass, String login) throws InterruptedException {
         isDisplayed(paraBankHomePage.getParaBankLogoOnTheHomePage());
         highlightElement(paraBankHomePage.getParaBankLogoOnTheHomePage(), driver);
@@ -34,6 +35,7 @@ public class NewBankAccountStepDef extends AbstractStepDef {
         click(mainMeniuPage.getOpenNewAccount());
         assertEquals("Open New Account", mainMeniuPage.getOpenNewAccount().getText());
     }
+
 
     @When("User selects {} of account")
     public void selectTypeOfAccount(String type) throws InterruptedException {
@@ -84,6 +86,7 @@ public class NewBankAccountStepDef extends AbstractStepDef {
                 " to account " + getData(NEW_ACCOUNT_ID).toString());
     }
 
+
     @Then("User navigates and check that transfer was with success")
     public void navigateAndCheckThatTransferWasWithSuccess() throws InterruptedException {
         click(mainMeniuPage.getAccountsOverview());
@@ -108,6 +111,7 @@ public class NewBankAccountStepDef extends AbstractStepDef {
 //            else
 //                log.info("NIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII");
 //        }
+
         if (accountDetailsPage.getTransactionsType().getText().contains("Funds Transfer Received") &&
                 accountDetailsPage.getTransactionsType().getText().contains(transactionAmmount))
             log.info("Transaction is available in the table");

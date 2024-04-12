@@ -6,8 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 @Getter
-
-public class ParaBankHomePage extends ObjectsPage {
+public class ParaBankHomePage extends PageObjectsPage {
 
     @FindBy(xpath = "//h2[contains(text(),'Customer Login')]")
     WebElement customerLogin;

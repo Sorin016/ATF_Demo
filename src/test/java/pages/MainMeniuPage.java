@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 @Getter
-public class MainMeniuPage extends ObjectsPage {
+public class MainMeniuPage extends PageObjectsPage {
 
     @FindBy(xpath = "//h2[contains(text(),'Account Services')]")
     WebElement accountServices;

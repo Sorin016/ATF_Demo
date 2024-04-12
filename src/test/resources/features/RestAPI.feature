@@ -1,5 +1,5 @@
 
-Feature: Create a new Bank Account
+Feature: Create a new Bank Account via API
 
   Scenario Outline: User create new bank account and make a transaction
     Given User navigates to 'Register' page

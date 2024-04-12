@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 @Getter
-public class OpenNewAccountPage extends ObjectsPage {
+public class OpenNewAccountPage extends PageObjectsPage {
 
     @FindBy(xpath = "//h1[contains(text(),'Open New Account')]")
     WebElement openNewAccountText;

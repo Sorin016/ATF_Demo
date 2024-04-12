@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 @Getter
-public class RegisterNewUserErrorsPage extends ObjectsPage {
+public class RegisterNewUserErrorsPage extends PageObjectsPage {
 
     @FindBy(xpath = "//span[@id='customer.address.city.errors']")
     WebElement cityEmptyError;
@@ -19,6 +19,9 @@ public class RegisterNewUserErrorsPage extends ObjectsPage {
 
     @FindBy(xpath = "//span[@id='customer.ssn.errors']")
     WebElement ssnEmptyError;
+
+    @FindBy(xpath = "//span[@id='customer.username.errors']")
+    WebElement dublicateUserErrorMessage;
 
     public RegisterNewUserErrorsPage(WebDriver driver) {
         super(driver);

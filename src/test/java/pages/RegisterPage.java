@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 @Getter
-public class RegisterPage extends ObjectsPage {
+public class RegisterPage extends PageObjectsPage {
 
     @FindBy(xpath = "//h1[contains(text(),'Signing up is easy!')]")
     WebElement sighUpIsEasyPhraseOnRegistPage;
