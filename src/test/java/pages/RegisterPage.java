@@ -44,7 +44,7 @@ public class RegisterPage extends PageObjectsPage {
     @FindBy(xpath = "//input[@id='repeatedPassword']")
     WebElement confirmedPassword;
 
-    @FindBy(xpath = "//tbody/tr[13]/td[2]/input[1]")
+    @FindBy(xpath = "//input[@value='Register']")
     WebElement registerButton;
 
     public RegisterPage(WebDriver driver) {

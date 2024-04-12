@@ -10,4 +10,5 @@ public enum DataKey {
     AMOUNT,
     API_USERNAME,
     API_PASSWORD,
+    TRANSACTION_AMMOUNT;
 }

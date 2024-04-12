@@ -3,6 +3,8 @@ package stepDefinition;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.openqa.selenium.By;
+
 
 import static actions.Actions.*;
 import static org.junit.Assert.assertEquals;
@@ -13,8 +15,9 @@ import static util.ScenarioContext.saveData;
 import static util.WaitUtils.waitForRetry;
 
 public class NewBankAccountStepDef extends AbstractStepDef {
-
-    @Given("User login with valid credentials {} and {}")
+    final static int TIME = 2000;
+  
+   @Given("User login with valid credentials {} and {}")
     public void loginWithValidCredentialsPassAndLog(String pass, String login) throws InterruptedException {
         isDisplayed(paraBankHomePage.getParaBankLogoOnTheHomePage());
         highlightElement(paraBankHomePage.getParaBankLogoOnTheHomePage(), driver);
@@ -33,7 +36,8 @@ public class NewBankAccountStepDef extends AbstractStepDef {
         assertEquals("Open New Account", mainMeniuPage.getOpenNewAccount().getText());
     }
 
-    @When("User select {} of account")
+
+    @When("User selects {} of account")
     public void selectTypeOfAccount(String type) throws InterruptedException {
         highlightElement(openNewAccountPage.getType(), driver);
         click(openNewAccountPage.getType());
@@ -46,17 +50,17 @@ public class NewBankAccountStepDef extends AbstractStepDef {
         }
         saveData(DEFAULT_ACCOUNT_ID, openNewAccountPage.getDefauldAccountID().getText());
         click(openNewAccountPage.getOpenNewAccountButton());
-        waitForRetry(2000);
+        waitForRetry(TIME);
         assertEquals("Account Opened!", openNewAccountPage.getAccountOpened().getText());
         assertEquals("Your new account number:", openNewAccountPage.getYourAccountNumberText().getText());
         saveData(NEW_ACCOUNT_ID, openNewAccountPage.getNewAccountID().getText());
     }
 
-    @When("User open new account details")
+    @When("User opens new account details")
     public void openNewAccountDetails() throws InterruptedException {
         click(openNewAccountPage.getNewAccountID());
         highlightElement(accountDetailsPage.getAccountDetailsText(), driver);
-        waitForRetry(2000);
+        waitForRetry(TIME);
         assertEquals(getData(NEW_ACCOUNT_ID), accountDetailsPage.getAccountId().getText());
         if (accountDetailsPage.getAccountType().getText().equals(getData(SAVINGS))) {
             log.info("SAVINGS");
@@ -67,13 +71,14 @@ public class NewBankAccountStepDef extends AbstractStepDef {
 
     @When("Using new account transfer {} to another amount")
     public void usingNewAccountTransferAmountToAnotherAmount(String amount) throws InterruptedException {
+        saveData(TRANSACTION_AMMOUNT, amount);
         click(mainMeniuPage.getTransferFunds());
-        waitForRetry(2000);
+        waitForRetry(TIME);
         highlightElement(mainMeniuPage.getTransferFunds(), driver);
         sendKey(transferFundsPage.getTransferFundsAmount(), amount);
         click(transferFundsPage.getFromAccountId());
         sendKey(transferFundsPage.getFromAccountId(), getData(DEFAULT_ACCOUNT_ID).toString());
-        waitForRetry(1000);
+        waitForRetry(TIME);
         click(transferFundsPage.getToAccountId());
         sendKey(transferFundsPage.getToAccountId(), getData(NEW_ACCOUNT_ID).toString());
         click(transferFundsPage.getTransferButton());
@@ -81,13 +86,19 @@ public class NewBankAccountStepDef extends AbstractStepDef {
                 " to account " + getData(NEW_ACCOUNT_ID).toString());
     }
 
-    @Then("User navigate and check that transfer was with success")
+
+    @Then("User navigates and check that transfer was with success")
     public void navigateAndCheckThatTransferWasWithSuccess() throws InterruptedException {
         click(mainMeniuPage.getAccountsOverview());
         highlightElement(accountsOverviewPage.getAccountOverviewText(), driver);
         isDisplayed(accountDetailsPage.getAccountsTable());
-        String link = "//a[contains(text(),".concat(getData(NEW_ACCOUNT_ID).toString());
-//        List<WebElement> elems = accountsOverviewPage.getAccountTable();
+        String newAccountId = getData(NEW_ACCOUNT_ID).toString();
+        String transactionAmmount = getData(TRANSACTION_AMMOUNT).toString();
+        waitForRetry(TIME);
+        driver.findElement(By.xpath("//a[contains(text(),'" + newAccountId + "')]")).click();
+        waitForRetry(TIME);
+//        String link = "//a[contains(text(),".concat(getData(NEW_ACCOUNT_ID).toString());
+//        List<WebElement> elems = (List<WebElement>) accountsOverviewPage.getAccountTable();
 //        for (WebElement rowElem : elems)
 //        {
 //            if(rowElem.getText().contains(getData(NEW_ACCOUNT_ID).toString()))
@@ -100,5 +111,9 @@ public class NewBankAccountStepDef extends AbstractStepDef {
 //            else
 //                log.info("NIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII");
 //        }
+
+        if (accountDetailsPage.getTransactionsType().getText().contains("Funds Transfer Received") &&
+                accountDetailsPage.getTransactionsType().getText().contains(transactionAmmount))
+            log.info("Transaction is available in the table");
     }
 }

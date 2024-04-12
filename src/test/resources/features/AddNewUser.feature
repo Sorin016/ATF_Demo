@@ -24,6 +24,7 @@ Feature: Add a new user
 #      | 123      | supri3   |
 
 
+
   @UI
   Scenario Outline: Add already existing user
     Given User is on main home page

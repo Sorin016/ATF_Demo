@@ -214,11 +214,13 @@
 <!--        </plugins>-->
 <!--    </build>-->
 
+
     <build>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.22.0</version>
                 <configuration>
                     <testFailureIgnore>true</testFailureIgnore>
                 </configuration>
@@ -235,6 +237,7 @@
                             <goal>generate</goal>
                         </goals>
                         <configuration>
+
                             <projectName>cucumber-jvm-example</projectName>
                             <!-- optional, per documentation set this to "true" to bypass generation of Cucumber Reports entirely, defaults to false if not specified -->
                             <skip>false</skip>
@@ -260,6 +263,11 @@
                             <mergeFeaturesWithRetest>false</mergeFeaturesWithRetest>
                             <!-- optional, set true to fail build on test failures -->
                             <checkBuildResult>false</checkBuildResult>
+
+                            <projectName>ATF_Demo</projectName>
+                            <outputDirectory>${project.build.directory}/cucumber-report-html</outputDirectory>
+                            <cucumberOutput>${project.build.directory}/cucumber.json</cucumberOutput>
+
                         </configuration>
                     </execution>
                 </executions>

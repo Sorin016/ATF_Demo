@@ -20,6 +20,9 @@ public class AccountDetailsPage extends PageObjectsPage {
     @FindBy(xpath = "//table[@id='accountTable']/tbody/tr/td")
     WebElement accountsTable;
 
+    @FindBy(xpath = "//table[@id='transactionTable']")
+    WebElement transactionsType;
+
     public AccountDetailsPage(WebDriver driver) {
         super(driver);
     }

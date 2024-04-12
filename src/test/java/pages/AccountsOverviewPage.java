@@ -13,7 +13,7 @@ public class AccountsOverviewPage extends PageObjectsPage {
 
     @FindBy(xpath = "//a[contains(text(),'18450')]")
     WebElement ourAccount;
-
+    
     @FindBy(xpath = "//*[@id=\"accountTable\"]/tbody")
     WebElement accountTable;
 
