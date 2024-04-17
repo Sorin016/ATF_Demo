@@ -11,7 +11,7 @@ import io.cucumber.junit.Cucumber;
         features = "src/test/resources/features",
         tags = "@Run",
         plugin = {"html:target/HtmlReport.htm",
-                  "me.jvt.cucumber.report.PrettyReports:target/CucumberMavenReports"})
-
+                "me.jvt.cucumber.report.PrettyReports:target/CucumberMavenReports",
+                "pretty", "summary"})
 public class TestRunner {
 }

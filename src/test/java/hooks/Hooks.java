@@ -6,6 +6,8 @@ import lombok.SneakyThrows;
 import org.openqa.selenium.chrome.ChromeDriver;
 import stepDefinition.AbstractStepDef;
 
+import java.io.IOException;
+
 public class Hooks extends AbstractStepDef {
     @Before("@UI")
     public void beforeTest() {
@@ -24,14 +26,14 @@ public class Hooks extends AbstractStepDef {
 
     @SneakyThrows
     @BeforeStep("@UI")
-    public void takeScreenshotBeforeEachStep(Scenario scenario) {
+    public void takeScreenshotBeforeEachStep(Scenario scenario) throws IOException {
         log.info("take a screenshot before steps");
         Actions.takeScreenshot(scenario, driver);
     }
 
     @SneakyThrows
     @AfterStep("@UI")
-    public void takeScreenshotAfterEachStep(Scenario scenario) {
+    public void takeScreenshotAfterEachStep(Scenario scenario) throws IOException {
         log.info("take a screenshot after steps");
         Actions.takeScreenshot(scenario, driver);
     }
