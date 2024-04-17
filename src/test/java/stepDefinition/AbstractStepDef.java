@@ -20,6 +20,7 @@ public class AbstractStepDef {
     protected static JavascriptException executor;
     protected static String chromeDriver = PropretyLoader.loadProperty("chromeDriver");
     protected static String homePageUrl = PropretyLoader.loadProperty("homePageUrl");
+    protected static String homePageUrlForAPI = PropretyLoader.loadProperty("homePageUrlForAPI");
     public ParaBankHomePage paraBankHomePage = new ParaBankHomePage(driver);
     public RegisterPage registerPage = new RegisterPage(driver);
     public RegisterNewUserErrorsPage registerNewUserErrorsPage = new RegisterNewUserErrorsPage(driver);
@@ -29,6 +30,8 @@ public class AbstractStepDef {
     public AccountDetailsPage accountDetailsPage = new AccountDetailsPage(driver);
     public TransferFundsPage transferFundsPage = new TransferFundsPage(driver);
     public AccountsOverviewPage accountsOverviewPage = new AccountsOverviewPage(driver);
+
+    public BillPaymentCompletePage billPaymentCompletePage=new BillPaymentCompletePage(driver);
     public BillPaymentPage billPaymentPage=new BillPaymentPage(driver);
     public RandomStream randomStream = new RandomStream();
     protected ChromeOptions options = new ChromeOptions();

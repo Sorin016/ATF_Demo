@@ -43,6 +43,9 @@ public class BillPaymentPage extends PageObjectsPage {
     @FindBy(xpath = "//input[@value='Send Payment']")
     WebElement billpayeeSendPaymentButton;
 
+    @FindBy(xpath = "//select[@name='fromAccountId']")
+    WebElement billpayeeFromAccountId;
+
     public BillPaymentPage(WebDriver driver) {
         super(driver);
     }
