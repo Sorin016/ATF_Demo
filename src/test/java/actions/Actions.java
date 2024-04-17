@@ -3,6 +3,7 @@ package actions;
 import io.cucumber.java.Scenario;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
+import stepDefinition.AbstractStepDef;
 
 import java.io.File;
 import java.io.IOException;
@@ -11,7 +12,8 @@ import java.time.format.DateTimeFormatter;
 
 import static util.CreationFolderIfNotExist.createDirectoryIfNotExists;
 
-public class Actions {
+
+public class Actions extends AbstractStepDef {
     public static void sendKey(WebElement element, String value) {
         element.sendKeys(value);
     }
@@ -23,6 +25,16 @@ public class Actions {
     public static void click(WebElement element) throws InterruptedException {
         Thread.sleep(3000);
         element.click();
+    }
+    public static void clickK(String type) throws InterruptedException {
+        WebElement element=null;
+        if(type.equals(element)){
+            Thread.sleep(3000);
+            element.click();
+        }
+        else{
+            driver.findElement(By.xpath(type)).click();
+        }
     }
 
     public static void scrollDown(WebDriver driver) {

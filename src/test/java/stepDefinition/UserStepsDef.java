@@ -28,12 +28,6 @@ public class UserStepsDef extends AbstractStepDef {
         highlightElement(paraBankHomePage.getParaBankLogoOnTheHomePage(), driver);
     }
 
-    @And("User clicks on 'Register' button")
-    public void clickOnRegisterButton() throws InterruptedException {
-        click(paraBankHomePage.getRegisterButtonOnHomePage());
-        assertEquals("Signing up is easy!", registerPage.getSighUpIsEasyPhraseOnRegistPage().getText());
-    }
-
     @Then("{} and {} is inserted")
     public void insertPasswordAndUsername(String password, String username) {
         highlightElement(registerPage.getUserName(), driver);

@@ -1,9 +1,9 @@
-@UI @Run
+@UI
 Feature: Add a new user
 
   Scenario Outline: Add new user
     Given User is on main home page
-    And User clicks on 'Register' button
+    And User clicks on 'Register'
     And <password> and <username> is inserted
     And User inserts the few fields
       | lastName  | address     |
@@ -19,10 +19,9 @@ Feature: Add a new user
 
     Examples:
       | password | username |
-      | 123      | vandam1  |
-#      | 123      | supri2   |
-#      | 123      | supri3   |
-
+      | 123      | sm       |
+      | 123      | supri2   |
+      | 123      | supri3   |
 
 
   @UI

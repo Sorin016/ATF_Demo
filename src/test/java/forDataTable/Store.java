@@ -10,6 +10,7 @@ public class Store {
 
     private List<ErrorMessages> errorMessages = new ArrayList<>();
     private List<UserInputFields> userInputFields = new ArrayList<>();
+    private List<BillPay> billPayList = new ArrayList<>();
 
     public void addErrorMessageValues(ErrorMessages errorMessages) {
         this.errorMessages.add(errorMessages);
@@ -17,6 +18,10 @@ public class Store {
 
     public void addInputFieldsValue(UserInputFields userInputFields) {
         this.userInputFields.add(userInputFields);
+    }
+
+    public void addAllFieldsForBillPay(BillPay billPay) {
+        this.billPayList.add(billPay);
     }
 
     public void addAllErrorMessageValues(Collection<ErrorMessages> userInputFields) {
